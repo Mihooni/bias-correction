@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.1] - 2026-09-09
+
+### 修复
+- SKILL.md 联动协议表引用了不存在的 skill（`code-reviewer`/`form-cro`/`spec-miner`，系其他 skill 库的残留名）→ 替换为实际生态中存在的 `code-review`/`deep-research`/`think`/`check`/`write`
+- SKILL.md frontmatter 补齐 `version: 1.0.1`（原缺失，与 README/CHANGELOG 版本无法对应）
+
 ## [1.0.0] - 2026-09-08
 
 ### 新增（README 与双语化）

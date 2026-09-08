@@ -4,7 +4,7 @@
 
 [简体中文](README.md) | **English**
 
-**Version**: v1.0.0 | **Updated**: 2026-09-08 | **License**: MIT
+**Version**: v1.0.1 | **Updated**: 2026-09-09 | **License**: MIT
 
 ## What is this
 
