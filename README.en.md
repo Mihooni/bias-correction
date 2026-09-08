@@ -4,7 +4,7 @@
 
 [简体中文](README.md) | **English**
 
-**Version**: v1.0.1 | **Updated**: 2026-09-09 | **License**: MIT
+**Version**: v1.1.0 | **Updated**: 2026-09-09 | **License**: MIT
 
 ## What is this
 
@@ -160,13 +160,68 @@ The most likely ending isn't "persistence paid off" — it's putting in another 
 - Creative entertainment (stories / jokes)
 - Ordinary questions with no bias signals — answered normally, no forced checks
 
-## Methodology sources
+## Methodology sources & evidence strength
+
+All 39 biases carry an explicit evidence label. The distribution — published because this library self-audits:
+
+| Label | Count | Meaning |
+|---|---|---|
+| 📊 Academic consensus | 37 | Reproducible textbook findings from controlled experiments (Kahneman, Thaler, Cialdini...) |
+| 💡 Practitioner heuristic | 2 | #22 Moral Licensing, #28 Identity Fusion — weaker experimental base, down-weight when used |
+
+The bias library rests on a stronger evidential base than generic "mental models" content: bias research is an experiment-dense field, and most entries map directly to classic experimental paradigms (the anchoring wheel-of-fortune study, the availability letter-frequency study, etc.).
 
 - Daniel Kahneman, *Thinking, Fast and Slow* — System 1/System 2, anchoring, loss aversion, framing effects
 - Max Bazerman & Don Moore, *Judgment in Managerial Decision Making* — overconfidence, negotiation biases
 - Annie Duke, *Thinking in Bets* — decision-outcome separation, premortems
 - Robert Cialdini, *Influence* — bandwagon, authority, commitment & consistency
-- Plus the academic consensus of behavioral economics and cognitive psychology (entries marked 📊 "academic consensus" have empirical literature support)
+
+## Design decisions: answers to "why isn't it more aggressive?"
+
+| What might feel "not enough" | Why it's built this way |
+|---|---|
+| Only fires when bias signals appear, never checks everything | Running the correction protocol on "what's the Python version" is tool abuse. The dual channel (trigger words + 8 implicit reasoning structures) guarantees: always present when it should be, zero noise when it shouldn't |
+| Corrections must use "is it possible that...", never "you're wrong" | Confrontational correction triggers defensiveness — the person remembers "being negated", not the bias. Gentleness is an engineering decision about efficacy, not politeness decoration |
+| L0/L1 never write decision-log entries | Log value lives in its signal-to-noise ratio. A diary of everything is a diary nobody reviews after 30 days |
+| Ships a cultural-adaptation layer that skips some "biases" | The classic bandwagon/authority experiments all use individualist cultures as the reference frame. Deferring to elders and valuing face are rational strategies in collectivist contexts — force-correcting them is systematic misdiagnosis |
+| The correction itself must pass a meta bias check | The "I know about biases so I'm immune" feeling *is* moral licensing. Without this layer, the tool would turn users into the most confident wrong people in the room |
+
+## Limitations: what this skill does NOT do
+
+- **Signal source is your own phrasing.** Biases hide in how things are said — if you compress "I want X so I found reason Y" into "should I pick Y?", the implicit-structure channel may miss it. Keep your reasoning chain when you ask, and detection improves.
+- **Presence of a bias ≠ size of its impact.** The protocol flags cost asymmetry, but precisely quantifying one bias's weight in *your* decision still requires reconciling the decision log against real outcomes 30 days later.
+- **Correction advice can itself be executed with overconfidence.** That's what Step 4's adversarial review and honest declaration exist for — it publishes its most uncertain part instead of feigning omniscience.
+- **Not a diagnostic tool.** "This reasoning shows confirmation-bias patterns" is a per-question check, never a clinical judgment about any person's cognition.
+- **Context-budget note:** this skill's description stays resident (~280 tokens — trigger criteria must be resident to be detectable), while the full SKILL.md (~7.8K tokens) loads only once triggered. If context budget is your hard constraint, the sister skill thinking-models ships 39-bias quick-reference cards as a lighter single-install alternative.
+
+## 5-minute self-test: don't trust the pitch, run these three
+
+Install it, then enter each line. Each maps to one core promise:
+
+| You enter | What it tests | Pass criterion |
+|---|---|---|
+| "What's the weather tomorrow" | Zero-noise promise | Normal answer, no trace of bias checking |
+| "Everyone's switching to AI, I definitely should too or I'll miss the boat" | Dual-channel detection | Names bandwagon (explicit) *plus* scarcity anxiety / base-rate neglect (implicit), phrased as "is it possible..." |
+| "Review my investment quarter — I lost money but I blame the market" | Attribution audit + log | Points out self-serving bias with the reverse-attribution test; L2+ writes a decision-log entry |
+
+If all three pass, it deserves this page. If not — open an issue. That matters more than anything written here.
+
+## FAQ
+
+**Q: Won't 39 biases turn me into someone who labels everything?**
+It would, without guardrails. That's why the anti-abuse list (e.g., "confirmation bias ≠ token counter-examples") and the meta check (#22 Moral Licensing exists precisely for this) are built in. Combination rules cap at ≤3 biases with at least 1 implicit — no noun-bombing allowed.
+
+**Q: Relationship with thinking-models — is one enough?**
+BC owns "where reasoning goes wrong" (signal-driven, passive); TM owns "how to decide better" (active graded analysis). BC alone: deep analysis falls back to built-in first-principles + adversarial review. TM alone: bias checks downgrade to quick-reference cards. Together: interoperable numbering (Sunk Cost = BC#29 = TM#1), linked protocols written into both. Pair install recommended.
+
+**Q: Why exactly 30 days for the review?**
+30 days is the shortest window where verifiable outcomes start appearing (a week is too short; a quarter is easy to forget), and paired with "write the prediction beforehand" it covers exactly one decision-feedback cycle. The interval is yours to adjust — the value lives in having real outcomes to reconcile against.
+
+**Q: Won't it overcomplicate simple questions?**
+Graded intervention exists exactly to prevent that: L0 = one bonus line, L1 = one reminder, L2-L3 = full six-step protocol. Say "just answer" and the exit mechanism applies immediately.
+
+**Q: Beyond Claude Code?**
+Copy `AGENTS.md` to your project root for Cursor/Codex/Cline/Continue — same protocol, adapted format.
 
 ## Changelog
 
