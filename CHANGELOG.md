@@ -2,6 +2,15 @@
 
 ## [1.0.0] - 2026-09-08
 
+### 新增（README 与双语化）
+- 补齐 README.md / LICENSE / CHANGELOG.md（原仅有 SKILL.md + AGENTS.md）
+- 双语 README：`README.md`（中文，默认）+ `README.en.md`（English），语言切换链接互通
+- README 含安装指南（Claude Code/Windows/Cursor/Codex/Cline）、输出示例、适用场景、方法论来源
+
+### 修复
+- 决策日志路径通用化（移除本机私有路径与私有 /checkpoint 命令引用）
+- AGENTS.md 中英混杂（"opposing视角"→"opposing viewpoint"）
+
 ### 首次发布
 - **39 个认知偏误**：第一层 8 个必学（含纠正方法+陷阱警示）+ 第二层 31 个进阶（信息处理/自我认知/社会群体/决策行为/概率预测五分类）
 - **触发词驱动架构**：显性触发词（确定性过高/直觉先行/投资行为/归因模式/从众/犹豫）+ 8 类隐式推理结构识别
