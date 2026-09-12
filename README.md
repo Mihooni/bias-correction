@@ -232,6 +232,15 @@ Cursor/Codex/Cline/Continue 复制 `AGENTS.md` 到项目根目录——协议同
 - **GitHub Sponsors**：[github.com/sponsors/Mihooni](https://github.com/sponsors/Mihooni)
 - 也可以点一个 ⭐ Star，让更多需要它的人看到——这对开源项目同样重要
 
+## 打赏支持
+
+如果这个项目对你有帮助，欢迎请作者喝杯咖啡 —— 每一杯都是持续更新的动力 ☕
+
+<p align="center">
+  <img src="docs/donate-wechat.png" alt="微信打赏" width="220">&nbsp;&nbsp;
+  <img src="docs/donate-alipay.jpg" alt="支付宝打赏" width="220">
+</p>
+
 ## License
 
 MIT
